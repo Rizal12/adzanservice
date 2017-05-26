@@ -18,7 +18,7 @@ public class microadzan {
 	public String get_Adzan(Model model,@RequestParam(value = "tanggal") int tanggal,
 			@RequestParam(value = "bulan") int bulan,
 			@RequestParam(value = "tahun") int tahun, 
-			@RequestParam(value = "lokasi") string lokasi){		
+			@RequestParam(value = "lokasi") String lokasi){		
 		
 		return PrayerTimes.getAdzan(tanggal, bulan, tahun).ToJson();
 		
