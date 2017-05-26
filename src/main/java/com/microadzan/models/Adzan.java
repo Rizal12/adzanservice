@@ -18,22 +18,29 @@ public class Adzan {
 	ArrayList<String> prayerTimes;
 	ArrayList<String> prayerNames = new ArrayList<String>();
 	public Adzan(){		
-		prayerNames.add("Fajr");
+		prayerNames.add("Shubuh");
 		prayerNames.add("Sunrise");
-		prayerNames.add("Dhuhr");
-		prayerNames.add("Asr");
+		prayerNames.add("Dzuhur");
+		prayerNames.add("Ashar");
 		prayerNames.add("Sunset");
-		prayerNames.add("Maghrib");
-		prayerNames.add("Isha");
+		prayerNames.add("Magrib");
+		prayerNames.add("Isya");
 	}
 	public Adzan(ArrayList<String> pray){
-		prayerNames.add("Fajr");
+		/*prayerNames.add("Fajr");
 		prayerNames.add("Sunrise");
 		prayerNames.add("Dhuhr");
 		prayerNames.add("Asr");
 		prayerNames.add("Sunset");
 		prayerNames.add("Maghrib");
-		prayerNames.add("Isha");
+		prayerNames.add("Isha");*/
+		prayerNames.add("Shubuh");
+		prayerNames.add("Sunrise");
+		prayerNames.add("Dzuhur");
+		prayerNames.add("Ashar");
+		prayerNames.add("Sunset");
+		prayerNames.add("Magrib");
+		prayerNames.add("Isya");
 		this.prayerTimes = pray;
 	}
 	public String ToJson(){
