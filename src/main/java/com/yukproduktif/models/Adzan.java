@@ -21,13 +21,13 @@ public class Adzan {
 		this.CreatePrayerNames();
 	}
 	private void CreatePrayerNames(){
-		prayerNames.add("Shubuh");
-		prayerNames.add("Sunrise");
-		prayerNames.add("Dzuhur");
-		prayerNames.add("Ashar");
-		prayerNames.add("Sunset");
-		prayerNames.add("Magrib");
-		prayerNames.add("Isya");
+		prayerNames.add("shubuh");
+		prayerNames.add("sunrise");
+		prayerNames.add("dzuhur");
+		prayerNames.add("ashar");
+		prayerNames.add("sunset");
+		prayerNames.add("magrib");
+		prayerNames.add("isya");
 	}
 	public Adzan(ArrayList<String> pray){
 		this.CreatePrayerNames();
