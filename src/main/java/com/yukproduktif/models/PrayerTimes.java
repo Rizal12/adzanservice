@@ -5,10 +5,10 @@ public class PrayerTimes {
 	public static Adzan getAdzan(int tanggal, int bulan, int tahun){
 		Adzan ad = new Adzan();
 		//ad.SetPrayerTimes(pray);	
-		if(PrayerTimes.CekKemenag() == true){
-			
+		if(PrayerTimes.CekKemenag() == true){ 
+			//Kemenag dari pras
 		}
-		else { //Calculator
+		else { //Calculator jika tidak ada di kemenag
 			ad = AdzanCalculator.get(tanggal, bulan, tahun);
 		}
 		return ad;

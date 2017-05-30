@@ -413,10 +413,11 @@ public class AdzanCalculator {
 
         return getDatePrayerTimes(year, month+1, day, latitude, longitude, tZone);
     }
-    public static Adzan get(int tanggal, int bulan, int tahun){
+    public static Adzan get(int tanggal, int bulan, int tahun){ //Get Adzan
     	double latitude = -6.90389;//-37.823689;
         double longitude = 107.6191;//145.121597;
     	AdzanCalculator prayers = new AdzanCalculator();
+    	prayers.setAsrJuristic(prayers.Shafii);
         prayers.setCalcMethod(prayers.Egypt);
         Calendar c;
         c = new GregorianCalendar(tahun, bulan, tanggal);
