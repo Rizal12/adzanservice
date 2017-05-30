@@ -42,4 +42,14 @@ public class MicroAdzan {
 		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear()).ToJson();		
 	}
 	
+	
+	@RequestMapping(value = "get_adzan/{lokasi}", method = RequestMethod.GET, produces = "application/json")
+	@ResponseBody
+	public String get_Adzan_location(Model model,
+			@PathVariable("lokasi") String lokasi){		
+		Date date = new Date();
+		
+		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear()).ToJson();			
+	}
+	
 }
