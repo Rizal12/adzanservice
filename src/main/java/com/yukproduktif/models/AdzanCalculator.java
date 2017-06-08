@@ -421,8 +421,15 @@ public class AdzanCalculator {
         prayers.setCalcMethod(prayers.Egypt);
         Calendar c;
         c = new GregorianCalendar(tahun, bulan, tanggal);
-        Adzan a = new Adzan(prayers.getPrayerTimes(c, latitude, longitude, 7));
+        //Adzan a = new Adzan(prayers.getPrayerTimes(c, latitude, longitude, 7), tanggal, bulan, tahun);
+        ArrayList<String> lst =  prayers.getPrayerTimes(c, latitude, longitude, 7);
+        //ArrayList<String> ls = new ArrayList<String>();
+        //ls.add(lst.get(0));
+        //ls.add(lst.get(0));
+        lst.remove(1);
+        lst.remove(4);
         
+        Adzan a = new Adzan(lst, tanggal, bulan, tahun);
         return a;
     }
     public static String getAdzan_2(int tanggal, int bulan, int tahun){

@@ -1,5 +1,6 @@
 package com.yukproduktif.controllers;
 
+import org.joda.time.LocalDate;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.HttpURLConnection;
-
+import org.joda.time.LocalDate;
 
 import javax.net.ssl.HttpsURLConnection;
 @RestController
@@ -51,9 +52,10 @@ public class MicroAdzan {
 	@RequestMapping(value = "get_adzan", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public String get_Adzan_today(Model model){		
-		Date date = new Date();
+		//Date date = new Date();
+		LocalDate date = LocalDate.now();
 		
-		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear(), "bandung").ToJson();		
+		return PrayerTimes.getAdzan(date.getDayOfMonth(), date.getMonthOfYear(), date.getYear(), "bandung").ToJson();		
 	}
 	
 	

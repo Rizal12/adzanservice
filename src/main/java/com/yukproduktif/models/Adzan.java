@@ -28,26 +28,39 @@ public class Adzan {
 		this.CreatePrayerNames();
 	}
 	private void CreatePrayerNames(){
-		prayerNames.add("shubuh");
+		/*prayerNames.add("shubuh");
 		prayerNames.add("sunrise");
 		prayerNames.add("dzuhur");
 		prayerNames.add("ashar");
 		prayerNames.add("sunset");
+		prayerNames.add("magrib");
+		prayerNames.add("isya");*/
+		
+		prayerNames.add("shubuh");
+		//prayerNames.add("sunrise"); //1
+		prayerNames.add("dzuhur"); //2
+		prayerNames.add("ashar"); //3
+		//prayerNames.add("sunset"); //4
 		prayerNames.add("magrib");
 		prayerNames.add("isya");
 	}
 	public Adzan(ArrayList<String> pray){
 		this.CreatePrayerNames();
 		this.prayerTimes = pray;
-		//DateTimeFormatter germanFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(Locale.GERMAN);
-		//this.tanggal = LocalDate.parse("24.12.2014", germanFormatter);
-		Chronology iso = ISOChronology.getInstanceUTC();
-		this.tanggal = new LocalDate(2017, 6, 8, iso);
-		//LocalDate.parse(arg0)
 		
+		this.tanggal = LocalDate.now();		
 	}
-	public void SetDate(LocalDate tanggal){
-		this.tanggal = tanggal;
+	public Adzan(ArrayList<String> pray, int d, int m, int y){
+		this.CreatePrayerNames();
+		this.prayerTimes = pray;
+		
+		this.SetDate(d, m, y);
+	}
+	
+	
+	public void SetDate(int d, int m, int y){
+		Chronology iso = ISOChronology.getInstanceUTC();
+		this.tanggal = new LocalDate(y,m,d,iso);
 	}
 	public String ToJson(){
 		int d = tanggal.getDayOfMonth();
@@ -62,7 +75,7 @@ public class Adzan {
 		m = todayHijri.getMonthOfYear();
 		y = todayHijri.getYear();
 		n = n + ", \"hijriyah\" : \"" + Integer.toString(d) + "/" + Integer.toString(m) + "/" + Integer.toString(y) + "\"";
-		n = n + ", \"adzan\" : {";   	 		
+		n = n + ", \"wajib\" : {";   	 		
         for (int i = 0; i < prayerTimes.size(); i++) {
             n = n + "\"" + prayerNames.get(i) + "\" : \"" + prayerTimes.get(i) + "\"";
             if(i < prayerTimes.size() - 1){
