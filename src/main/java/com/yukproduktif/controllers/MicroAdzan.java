@@ -1,7 +1,10 @@
 package com.yukproduktif.controllers;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,12 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yukproduktif.models.AdzanCalculator;
 import com.yukproduktif.models.PrayerTimes;
 
+import net.minidev.json.JSONArray;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.HttpURLConnection;
+
+
+import javax.net.ssl.HttpsURLConnection;
 @RestController
 public class MicroAdzan {
+	private final String USER_AGENT = "Mozilla/5.0";
 	/* 
 	 * @RequestMapping(value = "/get_adzan", params = {"tanggal","bulan","tahun", "lokasi"}, method = RequestMethod.GET, produces = "application/json")
 	 public String get_Adzan(Model model,@RequestParam(value = "tanggal") int tanggal,
@@ -31,7 +45,7 @@ public class MicroAdzan {
 			@PathVariable("tahun") int tahun, 
 			@PathVariable("lokasi") String lokasi){		
 		
-		return PrayerTimes.getAdzan(tanggal, bulan, tahun).ToJson();		
+		return PrayerTimes.getAdzan(tanggal, bulan, tahun, lokasi).ToJson();		
 	}
 	
 	@RequestMapping(value = "get_adzan", method = RequestMethod.GET, produces = "application/json")
@@ -39,7 +53,7 @@ public class MicroAdzan {
 	public String get_Adzan_today(Model model){		
 		Date date = new Date();
 		
-		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear()).ToJson();		
+		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear(), "bandung").ToJson();		
 	}
 	
 	
@@ -49,7 +63,10 @@ public class MicroAdzan {
 			@PathVariable("lokasi") String lokasi){		
 		Date date = new Date();
 		
-		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear()).ToJson();			
+		return PrayerTimes.getAdzan(date.getDay(), date.getMonth(), date.getYear(), lokasi).ToJson();			
 	}
+	
+	
+	
 	
 }
