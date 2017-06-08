@@ -1,8 +1,7 @@
 package com.yukproduktif.controllers;
 
 import org.joda.time.LocalDate;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yukproduktif.models.AdzanCalculator;
 import com.yukproduktif.models.PrayerTimes;
 
-import net.minidev.json.JSONArray;
 
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
