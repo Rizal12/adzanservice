@@ -17,7 +17,9 @@ import com.yukproduktif.models.PrayerTimes;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
@@ -51,9 +53,23 @@ public class MicroAdzan {
 	@ResponseBody
 	public String get_Adzan_today(Model model){		
 		//Date date = new Date();
-		LocalDate date = LocalDate.now();
+		//return PrayerTimes.getAdzan(date.getDate(), date.getMonth(), date.getYear(), "bandung").ToJson();
+		//return Integer.toString(date.getDate()) + "-" +  Integer.toString(date.getMonth()) + "-" + Integer.toString(date.getYear());
 		
-		return PrayerTimes.getAdzan(date.getDayOfMonth(), date.getMonthOfYear(), date.getYear(), "bandung").ToJson();		
+		Date date = new Date();
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(date);
+		int year = calendar.get(Calendar.YEAR);
+		//Add one to month {0 - 11}
+		int month = calendar.get(Calendar.MONTH) + 1;
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
+		//return Integer.toString(day) + "-" +  Integer.toString(month) + "-" + Integer.toString(year);
+		return PrayerTimes.getAdzan(day, month, year, "bandung").ToJson();
+		
+		
+		//LocalDate date = LocalDate.now();
+		
+		//return PrayerTimes.getAdzan(date.getDayOfMonth(), date.getMonthOfYear(), date.getYear(), "bandung").ToJson();		
 	}
 	
 	
